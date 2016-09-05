@@ -8,7 +8,7 @@ HOSTNAME=$(uname -n)
 PMADIR=/usr/lib/jvm/perf-map-agent
 WEBDIR=/usr/share/pcp/webapps/systack
 WDIR=/mnt/logs/pcp/generic/SYSTACK
-BDIR=/var/lib/pcp/pmdas/generic/BINFlameGraph
+BDIR=/usr/lib/pcp/pmdas/generic/BINFlameGraph
 SVG=$WEBDIR/systack.svg
 PERF=$WDIR/perf.data.$TS
 FOLDED=$WDIR/perf-cpu-stacks.folded
@@ -29,8 +29,8 @@ renice -n 19 -p $$ 1>>/dev/null 2>> /dev/null
 for pid in $(pgrep -x java); do
         mapfile=/tmp/perf-$pid.map
         if [ -e $PMADIR ]; then
-                cd $PMADIR
-                JAVA_HOME=/usr/lib/jvm/jdk1.8.0_45/
+                cd $PMADIR/out
+                JAVA_HOME=/usr/lib/jvm/jdk1.8.0_91/
 		if [ -d $JAVA_HOME ]; then
 			# run as java user to avoid "well-known file is not secure" error
 			JAVA_USER=$(ps ho user -p $pid)
