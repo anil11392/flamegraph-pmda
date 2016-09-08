@@ -8,7 +8,7 @@ S3BUCKET="s3://nflx.cldperf.test/pcp/$INSTANCE"
 #DIR
 WEBDIR=/usr/share/pcp/webapps/heatmap
 WDIR=/mnt/logs/pcp/generic/HEATMAP
-BDIR=/var/lib/pcp/pmdas/generic/BINHeatMap
+BDIR=/usr/lib/pcp/pmdas/generic/BINHeatMap
 #FILE
 SVG=$WEBDIR/heatmap.svg
 PERF=$WDIR/perf.data.$TS

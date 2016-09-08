@@ -10,7 +10,7 @@ TS=`date +%Y%m%d-%T`
 #DIR
 WEBDIR=/usr/share/pcp/jsdemos/jstack
 WDIR=/mnt/logs/pcp/generic/JSTACK
-BDIR=/var/lib/pcp/pmdas/generic/BINFlameGraph
+BDIR=/usr/lib/pcp/pmdas/generic/BINFlameGraph
 THDIR=/apps/tomcat/logs/cores
 #FILE
 THSVG=$WEBDIR/threadump-history.svg
@@ -59,7 +59,7 @@ $BDIR/flamegraph.pl < $WDIR/out.folded > $THSVG
 /usr/bin/s3cp $THSVG $S3BUCKET/$S3THSVG-$TS.svg &> /dev/null
 else
 # For Demo purpose only
-/bin/cat /var/lib/pcp/pmdas/generic/JSTACK/threaddump*.txt > $WDIR/all-threaddump.txt
+/bin/cat /usr/lib/pcp/pmdas/generic/JSTACK/threaddump*.txt > $WDIR/all-threaddump.txt
 $BDIR/stackcollapse-jstack.pl < $WDIR/all-threaddump.txt >$WDIR/out.folded  
 $BDIR/flamegraph.pl < $WDIR/out.folded > $DEMOSVG 
 /usr/bin/s3cp $DEMOSVG $S3BUCKET/$S3DEMOSVG-$TS.svg &> /dev/null

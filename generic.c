@@ -91,19 +91,19 @@ generic_fetchCallBack(pmdaMetric *mdesc, unsigned int inst, pmAtomValue *atom)
         if (idp->item == 1) {
           atom->ul = time(NULL);
 	  // application and kernel stacks via perf and flamegraph 
-	  if (system ("/var/lib/pcp/pmdas/generic/systack.sh &") !=0)
+	  if (system ("/usr/lib/pcp/pmdas/generic/systack.sh &") !=0)
             fprintf(stderr, "system failed: %s\n", pmErrStr(-oserror()));
           }
         else if (idp->item == 2) {
           atom->ul = time(NULL);
 	   // java stack via jstack and flamegraph
-	  if (system ("/var/lib/pcp/pmdas/generic/jstack.sh &") !=0)
+	  if (system ("/usr/lib/pcp/pmdas/generic/jstack.sh &") !=0)
             fprintf(stderr, "system failed: %s\n", pmErrStr(-oserror()));
           }
         else if (idp->item == 3) {
           atom->ul = time(NULL);
 	   // block layer latency via perf and  heatmap
-	  if (system ("/var/lib/pcp/pmdas/generic/heatmap.sh &") !=0)
+	  if (system ("/usr/lib/pcp/pmdas/generic/heatmap.sh &") !=0)
             fprintf(stderr, "system failed: %s\n", pmErrStr(-oserror()));
           }
 	else
